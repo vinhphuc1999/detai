@@ -1,0 +1,44 @@
+{
+  "name": "violin-player",
+  "productName": "Violin",
+  "version": "3.1.1",
+  "description": "A fast, lightweight, and minimalistic desktop music player.",
+  "homepage": "https://violin-player.cc/",
+  "keywords": [
+    "lightweight",
+    "cross-platform",
+    "fast",
+    "minimalistic",
+    "music player",
+    "music",
+    "audio"
+  ],
+  "author": {
+    "name": "Tobias \"CodeF0x\" Oettl",
+    "email": "contact@codef0x.dev",
+    "url": "https://codef0x.dev"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "ship": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeF0x/violin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeF0x/violin/issues"
+  },
+  "main": "main.js",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-terser": "^1.2.0"
+  },
+  "dependencies": {
+    "custom-electron-titlebar": "^3.1.0",
+    "music-metadata": "^4.5.3",
+    "rgbaster": "^2.1.1"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/*
+.DS_Store
+docs/.DS_Store
+release-builds/*
+docs/images/.DS_Store
+src/img/icons/*-backup.*
+.idea/*
+dist/*
+!dist/package.json
+!dist/package-lock.json
+Violin.md

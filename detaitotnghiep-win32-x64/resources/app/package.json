@@ -1,0 +1,72 @@
+{
+    "name": "detaitotnghiep",
+    "version": "1.0.0",
+    "description": "appnghenhac",
+    "main": "main.js",
+    "engines": {
+        "node": ">=10.15.3",
+        "yarn": ">=1.16.0"
+    },
+    "scripts": {
+        "start": "electron .",
+        "postinstall": "electron-builder install-app-deps",
+        "ship": "electron-builder"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CodeF0x/violin.git"
+    },
+    "bugs": {
+        "url": "https://github.com/CodeF0x/violin/issues"
+    },
+    "devDependencies": {
+        "electron": "^7.2.4",
+        "electron-builder": "^21.2.0",
+        "electron-packager": "^15.2.0",
+        "gulp": "^4.0.2",
+        "gulp-clean-css": "^4.2.0",
+        "gulp-terser": "^1.2.0"
+    },
+    "build": {
+        "directories": {
+            "app": "dist",
+            "output": "release-builds",
+            "buildResources": "src/img/icons/icon.png"
+        },
+        "mac": {
+            "category": "public.app-category.audio"
+        },
+        "dmg": {
+            "contents": [
+                {
+                    "x": 120,
+                    "y": 230
+                },
+                {
+                    "x": 400,
+                    "y": 230,
+                    "type": "link",
+                    "path": "/Applications"
+                }
+            ]
+        },
+        "linux": {
+            "category": "Audio"
+        },
+        "snap": {
+            "confinement": "strict",
+            "summary": "A fast, lightweight, and minimalistic desktop music player.",
+            "grade": "stable",
+            "category": "Audio"
+        },
+        "win": {
+            "target": "msi",
+            "icon": "src/img/icons/icon.png"
+        }
+    },
+    "dependencies": {
+        "custom-electron-titlebar": "^3.1.0",
+        "music-metadata": "^4.5.3",
+        "rgbaster": "^2.1.1"
+    }
+}

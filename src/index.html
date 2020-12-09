@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'unsafe-inline' 'self'; img-src 'self' data:" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>
+        DE TAI TOT NGHIEP 2020.
+    </title>
+</head>
+
+<body>
+    <div class="top-bg"></div>
+    <div class="file-con">
+        <div class="creator">
+
+            <a href="#" id="creator-link"></a>
+        </div>
+        <a href="#" id="open-folder" class="btn">CHỌN THƯ MỤC.</a>
+        <input type="text" placeholder="Tìm theo tên bài hát.   " class="search" id="search" disabled />
+    </div>
+    <div id="by-name">Tên bài hát.</div>
+    <div id="by-album">Album</div>
+    <div id="by-artist">Ca sĩ.</div>
+    <div id="loader"></div>
+    <div id="songs"></div>
+    <div id="album-img"></div>
+    <div class="bottom-bg">
+        <div class="control-con">
+            <div id="shuffle"></div>
+            <div id="last-song"></div>
+            <div id="play"></div>
+            <div id="next-song"></div>
+            <div id="repeat"></div>
+        </div>
+        <div class="progress-con">
+            <div id="timer-start">0:00</div>
+            <progress id="progress-value" value="0" max="100"></progress>
+            <div id="timer-end">0:00</div>
+        </div>
+        <div class="song-info">
+            <div id="song-title">Ca khúc tiếp theo</div>
+            <div>&nbsp;trình bày bởi&nbsp;</div>
+            <div id="song-artist">Ca sĩ</div>
+            <div id="volume-wrapper">
+                <div id="volume-button"></div>
+                <input type="range" min="0" max="100" value="100" id="volume" />
+            </div>
+        </div>
+    </div>
+    <script src="js/PermissionCheck.js"></script>
+    <script src="js/Index.js"></script>
+</body>
+
+</html>

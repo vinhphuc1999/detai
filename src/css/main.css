@@ -1,0 +1,463 @@
+:root {
+  --bg-color: #001628;
+  --con-color: #002a4d;
+  --text-color: #f2f2f2;
+  --btn-color: #db2828;
+  --btn-color-hover: #c42121;
+  --text-color-hover: #cfcfcf;
+  --input-color: #00335d;
+  --link-color: #2185d0;
+  --song-con-hover: #ffc7b3;
+  --song-con-active: #fe9a76;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 4px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--song-con-active);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/** 
+For OS X
+*/
+body {
+  -webkit-app-region: drag;
+  display: grid;
+  grid-template-rows: 10vh 5vh auto 130px;
+  grid-template-columns: 130px 1fr 1fr 1fr;
+  background-color: var(--bg-color);
+  height: 100vh;
+}
+
+/**
+For Windows & Linux
+These element get injected by custom-electron-titlebar
+-------------------------------------------------------
+*/
+.titlebar {
+  position: static;
+}
+
+.container-after-titlebar {
+  -webkit-app-region: no-drag;
+  display: grid;
+  grid-template-rows: 10vh 5vh auto 130px;
+  grid-template-columns: 130px 1fr 1fr 1fr;
+  background-color: var(--bg-color);
+  position: static;
+}
+
+.menubar-menu-container {
+  -webkit-app-region: no-drag;
+}
+
+.menubar-menu-container * {
+  -webkit-app-region: no-drag;
+}
+
+/** ------------------------------------------------ */
+
+.top-bg {
+  grid-row: 1;
+  grid-column: 1/5;
+  background-color: var(--con-color);
+  width: 100%;
+}
+
+.btn,
+.file-con {
+  grid-row: 1;
+  grid-column: 2/5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.creator {
+  font-size: 0.7rem;
+  color: var(--text-color);
+}
+
+#creator-link {
+  color: var(--link-color);
+  text-decoration: none;
+  -webkit-app-region: no-drag;
+}
+
+#creator-link:hover {
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.3s ease-in-out;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: var(--btn-color);
+  border-radius: 5px;
+  color: var(--text-color);
+  font-weight: 900;
+  font-size: 0.8em;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+.btn:hover {
+  background-color: var(--btn-color-hover);
+  color: var(--text-color-hover);
+}
+
+input {
+  -webkit-app-region: no-drag;
+  user-select: auto;
+  -webkit-appearance: textfield;
+  background-color: var(--input-color);
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  border-radius: 2px;
+  padding: 10px;
+  font-size: 0.85em;
+  color: var(--text-color);
+  border-width: 0;
+  border-style: inset;
+  border-color: initial;
+  border-image: initial;
+}
+
+input:focus {
+  outline: none;
+}
+
+input:disabled:hover {
+  cursor: not-allowed;
+}
+
+.song-list {
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 15% 1fr 1fr 1fr;
+  grid-gap: 0 2%;
+}
+
+#by-name,
+#by-album,
+#by-artist {
+  margin-top: 10px;
+  grid-row: 2;
+  justify-self: center;
+  -webkit-app-region: no-drag;
+  display: none; /** Issue #144 */
+}
+
+#by-name:hover,
+#by-album:hover,
+#by-artist:hover {
+  cursor: pointer;
+}
+
+#songs {
+  -webkit-app-region: no-drag;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden scroll;
+  padding-top: 10px;
+  padding-left: 5px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  grid-row: 3;
+  grid-column: 1/5;
+}
+
+#songs div div {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden scroll;
+}
+
+#loader {
+  z-index: 4;
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(233, 212, 212, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--song-con-active);
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#by-name,
+#by-album,
+#by-artist,
+#songs {
+  color: var(--text-color);
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
+#by-name {
+  grid-column: 1/3;
+}
+
+#by-album {
+  grid-column: 3;
+}
+
+#by-artist {
+  grid-column: 4;
+}
+
+.song-container {
+  display: grid;
+  grid-template-columns: 15% 1fr 1fr 1fr;
+}
+
+.song-container:hover {
+  color: var(--song-con-hover);
+  cursor: pointer;
+}
+
+.song-container-active {
+  color: var(--song-con-active);
+}
+
+.song-container-inactive {
+  color: var(--text-color);
+}
+
+.song-titles {
+  grid-column: 1 / 3;
+  align-self: center;
+}
+
+.song-albums {
+  grid-column: 3 / auto;
+}
+
+.song-artists {
+  grid-column: 4 / auto;
+}
+
+.bottom-bg {
+  grid-row: 4;
+  grid-column: 2/5;
+  background-color: var(--con-color);
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+#album-img {
+  grid-column: 1;
+  grid-row: 4;
+  background-color: gray;
+  background-position: center;
+  background-size: cover;
+}
+
+.control-con {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-content: flex-end;
+}
+
+.progress {
+  grid-row: 2;
+}
+
+.song-info {
+  grid-row: 3;
+}
+
+#shuffle,
+#last-song,
+#play,
+#next-song,
+#repeat {
+  -webkit-app-region: no-drag;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  justify-self: center;
+  align-self: center;
+}
+
+#shuffle {
+  grid-column: 1;
+  background-image: url('../img/shuffle.png');
+}
+
+#last-song {
+  grid-column: 2;
+  background-image: url('../img/backward.png');
+}
+
+#play {
+  grid-column: 3;
+  background-image: url('../img/play.png');
+}
+
+#next-song {
+  grid-column: 4;
+  background-image: url('../img/forward.png');
+}
+
+#repeat {
+  grid-column: 5;
+  background-image: url('../img/repeat.png');
+}
+
+#next-song:hover,
+#last-song:hover,
+#shuffle:hover,
+#play:hover,
+#repeat:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
+}
+
+.progress-con {
+  grid-row: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#timer-start,
+#timer-end {
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+progress {
+  height: 5px;
+  display: block;
+  background: rgb(0, 22, 40);
+  width: 80%;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+
+progress::-moz-progress-bar {
+  background: rgb(0, 22, 40);
+}
+
+progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 15px;
+  background: var(--song-con-active);
+}
+
+.song-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 0.9em;
+}
+
+#song-title,
+#song-artist {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#volume-wrapper {
+  position: absolute;
+  right: 10px;
+  -webkit-app-region: no-drag;
+}
+
+#volume-button {
+  float: left;
+  height: 20px;
+  width: 20px;
+  background-image: url('../img/volume.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+input[type='range'] {
+  margin: 0;
+  padding: 0;
+  padding-left: 10px;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: var(--song-con-active);
+  border-radius: 1.3px;
+}
+
+input[type='range']:focus::-webkit-slider-runnable-track {
+  background: var(--song-con-active);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 15px;
+  width: 15px;
+  border-radius: 25px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+#volume {
+  background-color: transparent;
+}
+
+/**
+* Because volume slider is positionied absolute,
+* we need this ugly rule to adjust song artist 
+* and song title
+*/
+@media (max-width: 1000px) {
+  #song-title,
+  #song-artist {
+    max-width: 10em;
+  }
+}
+
+@media (min-width: 1000px) {
+  #song-title,
+  #song-artist {
+    max-width: 28em;
+  }
+}
